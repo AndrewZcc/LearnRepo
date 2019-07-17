@@ -21,8 +21,9 @@ WebPractice git:(master) ✗ tree
 #### 遗留问题
 
 1. 怎么把 web.py 与 main.py 这两个文件解耦的？
-（直接分开 会导致 web.py 在运行时 app上未注册任何url！导致 404 Not-Found! ）
-（解决方法：使用 app.register_blueprint 方法 注册app函数，实现解耦！）
+
+    （直接分开 会导致 web.py 在运行时 app上未注册任何url！导致 404 Not-Found! ）
+    <br>（解决方法：使用 app.register_blueprint 方法 注册app函数，实现解耦！）
 
 ```python
 >>> web.py
@@ -88,6 +89,10 @@ https://cloud.tencent.com/developer/ask/109921
 #### PNFWeb 遗留问题
 
 1. js 动态添加 class="active" 属性，效果总是 “日志闪现”, active不生效
-（定位原因：PNFWeb中 每点击一次nav导航元素，就会在后台调用 render_templates() 重新渲染 给用户提供一个全新的页面）
-（在新页面中，原先动态添加的 active 此时已经被覆盖了，所以新页面展现出来的效果就是 上个页面的日志-瞬间消失了 && 上个页面的active属性对本页面不生效）！
 
+    （定位原因：PNFWeb中 每点击一次nav导航元素，就会在后台调用 render_templates() 重新渲染 给用户提供一个全新的页面）
+<br>（在新页面中，原先动态添加的 active 此时已经被覆盖了，所以新页面展现出来的效果就是 上个页面的日志-瞬间消失了 && 上个页面的active属性对本页面不生效）！
+<br> *解决方法*：利用 浏览器缓存（**browsers cache**）！https://stackoverflow.com/questions/41144565/flask-does-not-see-change-in-js-file
+<br> jQuery AJAX 从服务器获取/发送数据 http://www.w3school.com.cn/jquery/jquery_ajax_get_post.asp
+
+2. Flask 网站 可考虑集成 **开源在线Markdown编辑器**（https://pandao.github.io/editor.md/）
